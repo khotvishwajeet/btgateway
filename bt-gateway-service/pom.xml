@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -16,10 +16,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-boot.version>2.4.0</spring-boot.version>
-		<spring-cloud.gateway.version>3.0.0-M6</spring-cloud.gateway.version>
-		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-		<spring-boot-hystrix.version>2.2.0.RC2</spring-boot-hystrix.version>
+		<spring-cloud.gateway.version>2.1.0.M3</spring-cloud.gateway.version>
+		<spring-cloud.version>Greenwich.M3</spring-cloud.version>
+		<spring-boot-hystrix.version>2.1.0.M3</spring-boot-hystrix.version>
 	</properties>
 
 	<dependencies>
@@ -31,13 +30,28 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
-			<version>${spring-boot.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 			<version>${spring-boot-hystrix.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.30</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
