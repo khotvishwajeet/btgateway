@@ -1,20 +1,65 @@
 server:
   port: 8080
 
+
 spring:
   cloud:
     gateway:
+      default-filters:
+        - name: LoggingFilter
       routes:
-      - id: myFirstModule
-        uri: http://localhost:8081/
-        predicates:
-        - Path=/myfirst/**
-      - id: mySecondModule
-        uri: http://localhost:8082/
-        predicates:
-        - Path=/mySecond/**
+        - id: myfirst-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/myfirst/**
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar
+            - AddRequestTimeHeaderPreFilter
+            - AddResponseHeader=X-Response-Bye, Bye
+            - AddResponseTimeHeaderPostFilter
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # auth0
+          issuer-uri: https://ibasak.auth0.com/
+          audience: https://quickstarts/api
+
+security:
+  auth:
+    user: jdoe
+    password: hello
+    routes:
+      myfirst-service:
+        user: userA
+        password: passwordA
+        authenticatorClasses:
+          - com.bt.security.basic.BasicAuthenticator
+          - com.bt.security.oauth2.JwtAuthenticator
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-    reactor.netty.http.client: DEBUG
+    org.springframework: INFO
+
+
+management:
+  health:
+    diskspace:
+      enabled: true
+    db:
+      enabled: true
+    defaults:
+      enabled: true
+    details:
+      enabled: true
+    application:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /
+      expose: "*"
+
+

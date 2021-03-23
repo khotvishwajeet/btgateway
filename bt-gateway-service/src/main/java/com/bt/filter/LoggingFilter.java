@@ -1,6 +1,5 @@
 package com.bt.filter;
 
-import com.bt.configuration.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,7 @@ public class LoggingFilter extends AbstractGatewayFilterFactory<LoggingFilter.Co
 
     final Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
 
-    @Autowired
-    private ConfigurationService configurationService;
+
 
     public LoggingFilter() {
         super(Config.class);
