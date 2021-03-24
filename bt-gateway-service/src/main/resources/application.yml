@@ -27,8 +27,8 @@ spring:
 
 security:
   auth:
-    user: jdoe
-    password: hello
+    user: vishwa
+    password: test
     routes:
       myfirst-service:
         user: userA
